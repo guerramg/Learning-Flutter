@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_03/pages/dialogs/dialog_custom.dart';
 
@@ -27,7 +30,7 @@ class DialogPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-               await showDialog(
+                await showDialog(
                   context: context,
                   builder: (context) {
                     return SimpleDialog(
@@ -49,39 +52,71 @@ class DialogPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-              await  showDialog(
+                await showDialog(
                   context: context,
                   builder: (context) {
-                    return AlertDialog(
-                      backgroundColor: Colors.red[200],
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Cancelar'),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Excluir'),
-                        ),
-                      ],
-                      title: Text('Alert Dialog'),
-                      content: SingleChildScrollView(
-                        child: ListBody(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Deseja realmente excluir este item?',
+                    if (Platform.isIOS) { //RECONHECER QUAL PLATAFORMA O USUARIO USA
+                      return CupertinoAlertDialog(
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancelar'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Excluir'),
+                          ),
+                        ],
+                        title: Text('Alert Dialog'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Deseja realmente excluir este item?',
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    } else {
+                      return AlertDialog(
+                        backgroundColor: Colors.red[200],
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Cancelar'),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('Excluir'),
+                          ),
+                        ],
+                        title: Text('Alert Dialog'),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Deseja realmente excluir este item?',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }
                   },
                 );
               },
@@ -89,22 +124,21 @@ class DialogPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () async {
-               final selectedTime = await showTimePicker(
+                final selectedTime = await showTimePicker(
                   context: context,
                   initialTime: TimeOfDay.now(),
-                  );
-                  print('Hora selecionada: ${selectedTime}');
+                );
+                print('Hora selecionada: ${selectedTime}');
               },
               child: const Text('Time Dialog'),
             ),
             ElevatedButton(
               onPressed: () async {
-               final selectedDate = await showDatePicker(
+                final selectedDate = await showDatePicker(
                   context: context,
                   initialDate: DateTime.now(),
                   firstDate: DateTime(2000),
                   lastDate: DateTime(2100),
-                  
                 );
                 print('Data selecionada: $selectedDate');
               },

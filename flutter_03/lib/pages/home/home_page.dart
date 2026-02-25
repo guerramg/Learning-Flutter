@@ -8,7 +8,9 @@ enum PopUpMenuItem {
   botoesTexto,
   singleScrollView,
   listView,
-  dialogPage
+  dialogPage,
+  snackbarPage,
+  forms,
 }
 
 class HomePage extends StatelessWidget {
@@ -49,7 +51,13 @@ class HomePage extends StatelessWidget {
                   break;
                 case PopUpMenuItem.dialogPage:
                   Navigator.pushNamed(context, '/dialog_page');
-                  break; 
+                  break;
+                case PopUpMenuItem.snackbarPage:
+                  Navigator.pushNamed(context, '/snackbar_page');
+                  break;
+                case PopUpMenuItem.forms:
+                  Navigator.pushNamed(context, '/forms_page');
+                  break;
               }
             },
             itemBuilder: (BuildContext context) {
@@ -85,7 +93,15 @@ class HomePage extends StatelessWidget {
                 PopupMenuItem(
                   value: PopUpMenuItem.dialogPage,
                   child: Text('Dialog Page'),
-                )
+                ),
+                PopupMenuItem(
+                  value: PopUpMenuItem.snackbarPage,
+                  child: Text('Snackbar Page'),
+                ),
+                PopupMenuItem(
+                  value: PopUpMenuItem.forms,
+                  child: Text('Forms Page'),
+                ),
               ];
             },
           ),
