@@ -11,6 +11,10 @@ enum PopUpMenuItem {
   dialogPage,
   snackbarPage,
   forms,
+  cidades,
+  stack,
+  bottonNavigator,
+  circleAvatar,
 }
 
 class HomePage extends StatelessWidget {
@@ -58,6 +62,18 @@ class HomePage extends StatelessWidget {
                 case PopUpMenuItem.forms:
                   Navigator.pushNamed(context, '/forms_page');
                   break;
+                case PopUpMenuItem.cidades:
+                  Navigator.pushNamed(context, '/cidades');
+                  break;
+                case PopUpMenuItem.stack:
+                  Navigator.pushNamed(context, '/stack');
+                  break;
+                case PopUpMenuItem.bottonNavigator:
+                  Navigator.pushNamed(context, '/botton_navigator');
+                  break;
+                case PopUpMenuItem.circleAvatar:
+                  Navigator.pushNamed(context, '/circle_avatar');
+                  break;
               }
             },
             itemBuilder: (BuildContext context) {
@@ -101,6 +117,22 @@ class HomePage extends StatelessWidget {
                 PopupMenuItem(
                   value: PopUpMenuItem.forms,
                   child: Text('Forms Page'),
+                ),
+                PopupMenuItem(
+                  value: PopUpMenuItem.cidades,
+                  child: Text('Cidades Page'),
+                ),
+                PopupMenuItem(
+                  value: PopUpMenuItem.stack,
+                  child: Text('Stack Page'),
+                ),
+                PopupMenuItem(
+                  value: PopUpMenuItem.bottonNavigator,
+                  child: Text('Botton Navigator Page'),
+                ),
+                PopupMenuItem(
+                  value: PopUpMenuItem.circleAvatar,
+                  child: Text('Circle Avatar Page'),
                 ),
               ];
             },
