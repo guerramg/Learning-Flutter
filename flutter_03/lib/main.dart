@@ -4,12 +4,14 @@ import 'package:flutter_03/pages/botoes_rotacao_texto/botoes_rotacao_texto_page.
 import 'package:flutter_03/pages/botton_navigator_bar/botton_navigator_bar.dart';
 import 'package:flutter_03/pages/cidades/cidades_page.dart';
 import 'package:flutter_03/pages/circle_avatar/circle_avatar_page.dart';
+import 'package:flutter_03/pages/colors/colors_page.dart';
 import 'package:flutter_03/pages/container/container_page.dart';
 import 'package:flutter_03/pages/dialogs/dialog_custom.dart';
 import 'package:flutter_03/pages/dialogs/dialog_page.dart';
 import 'package:flutter_03/pages/forms/forms_page.dart';
 import 'package:flutter_03/pages/home/home_page.dart';
 import 'package:flutter_03/pages/layout_builder/layout_builder_page.dart';
+import 'package:flutter_03/pages/material_banner/material_banner_page.dart';
 import 'package:flutter_03/pages/media_query/media_query_page.dart';
 import 'package:flutter_03/pages/rows_columns/rows_colunms_page.dart';
 import 'package:device_preview/device_preview.dart';
@@ -56,7 +58,9 @@ class MyApp extends StatelessWidget {
         '/cidades': (context) => const CidadesPage(),
         '/stack': (context) => const StackPage(),
         '/botton_navigator': (context) =>  const BottonNavigatorBar(),
-        '/circle_avatar': (context) => const CircleAvatarPage()
+        '/circle_avatar': (context) => const CircleAvatarPage(),
+        '/colorsPage': (context) => const ColorsPage(),
+        '/materialBanner': (context) => const MaterialBannerPage()
         
       },
     );
