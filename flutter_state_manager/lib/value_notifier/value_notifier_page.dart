@@ -3,38 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_manager/widgets/imc_gauge.dart';
 import 'package:intl/intl.dart';
 
-class ImcSetstatePage extends StatefulWidget {
-  const ImcSetstatePage({Key? key}) : super(key: key);
+class ValueNotifierPage extends StatefulWidget {
+  const ValueNotifierPage({Key? key}) : super(key: key);
 
   @override
-  State<ImcSetstatePage> createState() => _ImcSetstatePageState();
+  State<ValueNotifierPage> createState() => _ValueNotifierPageState();
 }
 
-class _ImcSetstatePageState extends State<ImcSetstatePage> {
-
+class _ValueNotifierPageState extends State<ValueNotifierPage> {
   final pesoEC = TextEditingController();
   final alturaEC = TextEditingController();
-  var imc = 0.0;
+  var imc = ValueNotifier(0.0);
   final formKey = GlobalKey<FormState>();
 
   void _calcularIMC({required double peso, required double altura}) {
-    setState(() {
-      imc = peso / (altura * 2);
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    pesoEC.dispose();
-    alturaEC.dispose();
+    imc.value = 0;
+      imc.value = peso / (altura * 2);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculo IMC'),
+        title: const Text('Calculo IMC Value Notifier'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -43,7 +34,12 @@ class _ImcSetstatePageState extends State<ImcSetstatePage> {
             key: formKey,
             child: Column(
               children: [
-                ImcGauge(imc: imc),
+                ValueListenableBuilder(
+                  valueListenable: imc,
+                   builder: (context, double value, child) {
+                     return ImcGauge(imc: value);
+                   }
+                   ),
                 SizedBox(height: 20),
                 TextFormField(
                   controller: pesoEC,
@@ -99,9 +95,9 @@ class _ImcSetstatePageState extends State<ImcSetstatePage> {
                       );
                       double peso = formatter.parse(pesoEC.text) as double;
                       double altura = formatter.parse(alturaEC.text) as double;
-                      setState(() {
-                        imc = 0;
-                      });
+                      // setState(() {
+                      //   imc = 0;
+                      // });
                       _calcularIMC(peso: peso, altura: altura);
                     }
                   },

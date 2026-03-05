@@ -34,7 +34,7 @@ class _ImcSetstatePageState extends State<ImcSetstatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculo IMC'),
+        title: const Text('Calculo IMC Set State'),
       ),
       body: SingleChildScrollView(
         child: Padding(
