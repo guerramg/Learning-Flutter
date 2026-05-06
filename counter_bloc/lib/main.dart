@@ -1,4 +1,6 @@
 // ignore: unused_import
+import 'package:counter_bloc/page_cubit/counter_cubit_page.dart';
+import 'package:counter_bloc/page_cubit/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:counter_bloc/page_bloc/bloc/counter_bloc.dart';
@@ -20,13 +22,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       routes: {
-          '/bloc': (_) => BlocProvider(
-            create: (_) => CounterBloc(),
-            child: CounterBlocPage()
-          ),
+        '/bloc': (_) => BlocProvider(
+          create: (_) => CounterBloc(),
+          child: CounterBlocPage(),
+        ),
+        '/cubit': (_) => BlocProvider(
+          create: (context) => CounterCubit(),
+          child: CounterCubitPage(),
+        ),
       },
       home: const HomePage(),
     );
   }
 }
-
