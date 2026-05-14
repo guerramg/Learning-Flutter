@@ -32,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       final user = credential.user;
+      
 
       if(user != null && !user.emailVerified) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -43,11 +44,12 @@ class _LoginPageState extends State<LoginPage> {
         );
       }
 
+      user?.updateDisplayName('Guerra');
       credential.user?.sendEmailVerification(); //VERIFICAR SE O USUÁRIO ESTÁ VERIFICADO, SE NÃO ESTIVER, ENVIAR O E-MAIL DE VERIFICAÇÃO
 
     print(credential.user?.email);
     print(credential.user?.emailVerified);
-    print(credential.user?.uid);
+    print(credential.user?.displayName);
   }
 
    @override

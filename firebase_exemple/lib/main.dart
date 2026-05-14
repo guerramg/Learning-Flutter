@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_exemple/auth/email_password/login_page.dart';
 import 'package:firebase_exemple/auth/email_password/register_page.dart';
+import 'package:firebase_exemple/auth/email_password/show_user.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/auth/email_password/register': (_) => const RegisterPage(),
         '/auth/email_password/login': (_) => const LoginPage(),
+        '/auth/email_password/show_user': (_) => const ShowUser()
         },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -33,6 +36,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+@override
+void initState() {
+  FirebaseAuth.instance.authStateChanges().listen((User? user){
+    print('Usuario logado? ${user != null}');
+  });
+  super.initState();
+  
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +72,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 ).pushNamed('/auth/email_password/login');
               },
               child: const Text('Login'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).pushNamed('/auth/email_password/show_user');
+              },
+              child: const Text('Mostrar user logado'),
             ),
           ],
         ),
