@@ -8,7 +8,7 @@ class AuthModule extends Module {
 
   @override
   void routes(r) {
-    r.child(Modular.initialRoute, child: (context) => AuthHomePage());
+    r.child(Modular.initialRoute, child: (context) => AuthHomePage( authStore: Modular.get(),));
   }
   
 }
