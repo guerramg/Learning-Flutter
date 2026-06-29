@@ -47,6 +47,12 @@ class HomePage extends StatelessWidget {
                   },
                   child: const Text('Envio Params'),
                 ),
+                  ElevatedButton(
+                  onPressed: (){
+                  Get.toNamed('/nestedNavigation');
+                  },
+                  child: const Text('Nested Navigation'),
+                ),
               ],
             ),
             ),

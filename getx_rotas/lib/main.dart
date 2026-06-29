@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_rotas/nested_navigation/home_nested_navigation.dart';
 import 'package:getx_rotas/rotas_nomeadas/envio_parametros.dart';
 import 'package:getx_rotas/rotas_nomeadas/home_page.dart';
 import 'package:getx_rotas/rotas_nomeadas/page_404.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       getPages:[
           GetPage(name: '/home', page: () => HomePage()),
           GetPage(name: '/envioParametros', page: () => EnvioParametros()),
+          GetPage(name: '/nestedNavigation', page: ()=> HomeNestedNavigation())
           // GetPage(name: '/404', page: () => ToPage()),
       ],   
     );
